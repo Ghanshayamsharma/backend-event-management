@@ -1,0 +1,30 @@
+<!-- events/templates/events/event_list.html -->
+{%  load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event List</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <h1>Upcoming Events</h1>
+
+    <ul>
+        {% for event in events %}
+            <li>
+                <h2><a href="{% url 'event_detail' event.id %}">{{ event.name }}</a></h2>
+                <p>{{ event.description|truncatewords:20 }}</p>
+                <p><strong>Date:</strong> {{ event.date|date:"F j, Y, g:i a" }}</p>
+            </li>
+        {% empty %}
+            <li>No events available.</li>
+        {% endfor %}
+    </ul>
+
+    <!-- Optional: Link to create a new event, if applicable -->
+    <!-- <a href="{% url 'create_event' %}">Create a New Event</a> -->
+
+</body>
+</html>

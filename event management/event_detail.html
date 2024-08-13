@@ -1,0 +1,22 @@
+<!-- events/templates/events/event_detail.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ event.name }}</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <h1>{{ event.name }}</h1>
+    <p><strong>Date:</strong> {{ event.date|date:"F j, Y, g:i a" }}</p>
+    <p><strong>Description:</strong> {{ event.description }}</p>
+
+    <h2>Register for this event</h2>
+    <a href="{% url 'register' event.id %}">Register Now</a>
+
+    <h3>Other Events</h3>
+    <a href="{% url 'event_list' %}">Back to Events List</a>
+</body>
+</html>
